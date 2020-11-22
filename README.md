@@ -15,7 +15,8 @@ This allows to keep the code more legible and favors maintenance as dependencies
 
 The solution consists of three different scripts:
 
-1. A training script that automatizes a hyperparameter gridsearch to retrain the model in case new data arrives. Hyperparameter space is limited to values determined during the model prototyping where several model and feature transformations where tested.
+1. A dataset creation script that generates the boston houses data from sklearn basic datasets and splits in train and test. Test file does not have target column.
+1. A training script that automatizes a simple training and evaluation process over the modelling data. 
 1. A predict script that allows to load one pretrained model and use it to give predictions over new data. Both, model and data file to run the predictions can be changed.
 1. A simple APIRest server that allows to give predictions in real time. The API has been build using the Flask framework and can be easily scaled to serve large requests volumes.
 
@@ -143,7 +144,7 @@ TODO
 ====
 - [ ] Add cli to train, predict and api to specify via the command line the dependencies
 - [ ] Add Dockerfile to allow reproducibility
-- [ ] Add test
---------
+- [ ] Add testing
 
+--------
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
