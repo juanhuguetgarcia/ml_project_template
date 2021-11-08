@@ -34,6 +34,8 @@ class BatchInference(object):
     def load_data(self):
         if self.input_filepath.is_file():
             data = pd.read_csv(self.input_filepath)
+            if 'price' in data.columns:
+                data = data.drop(columns="price")
         else:
             raise FileNotFoundError("Modelling file note found")
         return data
@@ -53,7 +55,7 @@ class BatchInference(object):
         return self.output_filepath.is_file()
 
     def predict(self):
-        logger = logging.getLogger(__name__)
+        logger = logging.getLogger('batch_predict')
 
         logger.info(f"Loading data from {self.input_filepath}")
         data_df = self.load_data()

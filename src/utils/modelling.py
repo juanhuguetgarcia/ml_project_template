@@ -19,7 +19,7 @@ class ArtifactSaverLoader(object):
         """Persists artifact as a pickle
         """
         today = datetime.today()
-        today_str = datetime.strftime(today, '%Y-%m-%dT%HH-%MM')
+        today_str = datetime.strftime(today, '%Y-%m-%dT%H-%M-%SZ')
         artifact_unique_name = f'{artifact_name}-{today_str}.p' if artifact_name else f'artifact-{today_str}.p'
 
         artifact_filepath = self.models_filepath.joinpath(artifact_unique_name)

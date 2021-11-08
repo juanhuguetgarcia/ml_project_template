@@ -23,8 +23,6 @@ def create_train_test_datasets(df: pd.DataFrame) -> pd.DataFrame:
     df_test = df[:test_size]
     df_train = df[test_size:]
 
-    # Remove target to df_test as it won't have it in real world problem
-    df_test = df_test.drop(columns="price")
     return df_test, df_train
 
 
@@ -48,7 +46,7 @@ def main(input_filepath, output_filepath):
     """Runs data processing scripts to turn raw data from (../raw) into
     cleaned data ready to be analyzed (saved in ../processed).
     """
-    logger = logging.getLogger(__name__)
+    logger = logging.getLogger('make_dataset')
 
     logger.info("Creating dataset using load_boston from sklearn")
     data_df = create_dataset(input_filepath)

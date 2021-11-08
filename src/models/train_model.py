@@ -68,7 +68,7 @@ class ModelTrainer(object):
         return evaluation
 
     def train(self):
-        logger = logging.getLogger(__name__)
+        logger = logging.getLogger('train_model')
 
         logger.info(f'Loading data from {self.input_filepath}')
         data_df = self.load_modelling_data()
