@@ -20,11 +20,6 @@ endif
 # COMMANDS                                                                      #
 #################################################################################
 
-## Install Python Dependencies
-requirements: test_environment
-	$(PYTHON_INTERPRETER) -m pip install -U pip setuptools wheel
-	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
-
 ## Make Dataset
 data:
 	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/processed
@@ -72,10 +67,19 @@ else
 endif
 
 ## Set up python interpreter environment
-requirements:
+update_conda_environment:
+ifeq (True,$(HAS_CONDA))
+		@echo ">>> Detected conda, updating conda environment."
+		conda env update -f environment.yml
+else
+	@echo ">>> conda not detected. Exit"
+	exit 1
+endif
+
+create_conda_environment:
 ifeq (True,$(HAS_CONDA))
 		@echo ">>> Detected conda, creating conda environment."
-		conda env update -f environment.yml
+		conda env create -f environment.yml
 else
 	@echo ">>> conda not detected. Exit"
 	exit 1
