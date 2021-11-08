@@ -143,6 +143,8 @@ Project Organization
 TODO
 ====
 - [ ] Add cli to train, predict and api to specify via the command line the dependencies
+- [ ] Add config.ini to specify dependencies and automate full run
+    - see [config files to run machine learning experiments](https://www.borealisai.com/en/blog/using-config-files-run-machine-learning-experiments/)
 - [ ] Add Dockerfile to allow reproducibility
 - [ ] Add testing
 
